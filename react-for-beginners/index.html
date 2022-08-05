@@ -10,9 +10,15 @@
 
 <body>
   <!--클릭한 횟수 구하기-->
-
+  <div id="root"></div>
 </body>
+<!--React를 사용하기 위한 스크립트 2개-->
 <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script>
+  const root = document.getElementById('root'); // root아이디를 가져와서
+  const span = React.createElement('span', { id: 'sexy-span', style: { color: 'red' } }, 'Hello'); // span태그를 만들었다, id는 sexy-span, 빨간색, 내용은 hello
+  ReactDOM.render(span, root); // html로 만들어서 화면에 배치한다, span을 root안에 배치
+</script>
 
 </html>
