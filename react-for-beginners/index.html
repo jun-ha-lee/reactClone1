@@ -10,19 +10,9 @@
 
 <body>
   <!--클릭한 횟수 구하기-->
-  <span>Total clicks : 0</span>
-  <button id="btn">Click me</button>
-  <script>
-    let counter = 0;
-    const button = document.getElementById('btn');
-    const span = document.querySelector('span');
-    function handleClick() {
-      console.log('클릭함');
-      counter = counter + 1;
-      span.innerText = `Total clicks : ${counter}`;
-    }
-    button.addEventListener('click', handleClick);
-  </script>
+
 </body>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 
 </html>
