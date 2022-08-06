@@ -17,8 +17,24 @@
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 <script>
   const root = document.getElementById('root'); // root아이디를 가져와서
-  const span = React.createElement('span', { id: 'sexy-span', style: { color: 'red' } }, 'Hello'); // span태그를 만들었다, id는 sexy-span, 빨간색, 내용은 hello
-  ReactDOM.render(span, root); // html로 만들어서 화면에 배치한다, span을 root안에 배치
+  // const span = React.createElement('span', { id: 'sexy-span', style: { color: 'red' } }, 'Hello'); // span태그를 만들었다, id는 sexy-span, 빨간색, 내용은 hello
+  const h3 = React.createElement('h3', {
+    onMouseEnter: function () {
+      console.log('mouse enter')
+    }
+  }, 'Hello ');
+
+  const btn = React.createElement('button', {
+    onClick: () => {
+      console.log('I am Clicked');
+    },
+    style: {
+      backgroundColor: 'tomato'
+    }
+  }, 'click me');
+  const container = React.createElement('div', null, [h3, btn]);
+  // ReactDOM.render(span, root); // html로 만들어서 화면에 배치한다, span을 root안에 배치
+  ReactDOM.render(container, root); // html로 만들어서 화면에 배치, container를 root안에 배치
 </script>
 
 </html>
