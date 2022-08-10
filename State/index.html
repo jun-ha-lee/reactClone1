@@ -20,6 +20,8 @@
 <script type="text/babel"> // 바벨 사용시 type을 바꿔줘야 함
   const root = document.getElementById('root'); // root아이디를 가져와서
 
+  /* 어려운 방법 */
+  /*
   //useState
   let counter = 0;
   function countUp() {
@@ -28,18 +30,51 @@
     reRender();
   }
 
+  
   function reRender() {
-    ReactDOM.render(<Container />, root); // 리렌더링하기위해, UI가 업데이트 되도록
+    ReactDOM.render(<App />, root); // 리렌더링하기위해, UI가 업데이트 되도록
+  }
+  
+  // const App = () => ( // 한줄가능하기 때문에 {}없음 return 없음
+  //   <div> {/* 최상위 태그가 하나만 남아야 하므로 <div>로 감싸줌 */
+  //     <h3>Total clicks : {counter}</h3> {/* JSX에서 변수표기 */}
+  //     <button onClick={countUp}>Click me</button>
+  //   </div>
+  // )
+  // ReactDOM.render(<Container />, root); // html로 만들어서 화면에 배치, container를 root안에 배치
+  // reRender(); // 어려운 방법
+
+
+  /* 쉬운 방법 */
+
+  const App = () => {
+    /*
+    const data = React.useState(0); // 초기값을 0으로 줬다
+    const counter = data[0];
+    const setCounter = data[1];
+    */
+
+
+    // React.useState(초기값);
+    // counter는 첫번째 배열, setCounter는 두번째 배열
+    // 두번째 배열은 함수를 나타냄
+    const [counter, setCounter] = React.useState(0);
+    const onClick = () => {
+      setCounter(counter + 1); // setCounter는 괄호안의 값으로 업데이트하고 리렌더링
+    }
+
+    return (
+      <div>
+        <h3>Total Clicks : {counter}</h3>
+        <button onClick={onClick}>Click me</button>
+      </div>
+    );
   }
 
-  const Container = () => ( // 한줄가능하기 때문에 {}없음 return 없음
-    <div> {/* 최상위 태그가 하나만 남아야 하므로 <div>로 감싸줌 */}
-      <h3>Total clicks : {counter}</h3> {/* JSX에서 변수표기 */}
-      <button onClick={countUp}>Click me</button>
-    </div>
-  )
-  // ReactDOM.render(<Container />, root); // html로 만들어서 화면에 배치, container를 root안에 배치
-  reRender();
+
+
+
+  ReactDOM.render(<App />, root); // 리렌더링하기위해, UI가 업데이트 되도록
 </script>
 
 </html>
