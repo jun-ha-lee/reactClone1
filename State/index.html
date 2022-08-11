@@ -60,7 +60,16 @@
     // 두번째 배열은 함수를 나타냄
     const [counter, setCounter] = React.useState(0);
     const onClick = () => {
-      setCounter(counter + 1); // setCounter는 괄호안의 값으로 업데이트하고 리렌더링
+      // setCounter(counter + 1); // setCounter는 괄호안의 값으로 업데이트하고 리렌더링
+
+      // 아래의 방법이 더 안전함(current로 인자를 받아서 사용)
+      setCounter((current) => current + 1); // 첫번째 argument는 현재값(current)
+      /*
+      setCounter(function (current) {
+        return current + 1;
+      });
+      */
+
     }
 
     return (
