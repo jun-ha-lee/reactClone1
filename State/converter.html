@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<!--React를 사용하기 위한 스크립트 2개-->
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<!-- 바벨 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  const App = () => {
+    const [min, setMin] = React.useState(); // 초기값 없음
+
+    const onChange = (e) => {
+      console.log(e.target.value); // input값에 어떤게 있는지 출력
+      setMin(e.target.value);
+    }
+    return (
+      <div>
+        <h1 className='hi'>Super Converter</h1>{/* class는 className으로 */}
+        <label htmlFor='min'>분</label>{/* for는 htmlFor */}
+        <input
+          value={min}
+          id='min'
+          placeholder='분'
+          type='number'
+          onChange={onChange} // input값에 변화가 생기면 onChange함수를 실행시킨다
+        />
+        <h4>{min}분을 변환하겠다</h4>
+        <label htmlFor='hour'>시간</label>
+        <input id='hour' placeholder='시간' type='number' />
+      </div>
+    );
+  }
+  const root = document.getElementById('root');
+  ReactDOM.render(<App />, root);
+</script>
+
+</html>
