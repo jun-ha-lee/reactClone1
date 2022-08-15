@@ -17,27 +17,138 @@
 <!-- 바벨 -->
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  const App = () => {
-    const [min, setMin] = React.useState(); // 초기값 없음
+  const MinutesToHours = () => {
+    const [amount, setAmount] = React.useState(0); // 초기값 0
+    // amount는 데이터, setAmount 데이터를 수정하기 위한 함수
 
     const onChange = (e) => {
       console.log(e.target.value); // input값에 어떤게 있는지 출력
-      setMin(e.target.value);
+      setAmount(e.target.value);
+    }
+
+    function reset() {
+      setAmount(0);
+    }
+
+    // 분, 시간 변환버튼만들기
+    const [inverted, setInverted] = React.useState(true); // 초기값은 true
+
+    const onFlip = () => {
+      // setInverted(!inverted); // inverted 버튼을 클릭하면 반대로 바뀌어야 하기 때문에
+      // 현재상태의 반대 ! 로 바꿔줌
+      // true라면은 false로, false라면 true로 
+      reset();
+      setInverted((current) => !current); // current로 인자를 받아와서 => !current를 return
+    }
+
+    return (
+      <div>
+        <h3>분과 시간</h3>
+        <div>
+          <label htmlFor='min'>분</label>{/* for는 htmlFor */}
+          <input
+            value={!inverted ? amount * 60 : amount}
+            id='min'
+            placeholder='분'
+            type='number'
+            onChange={onChange} // input값에 변화가 생기면 onChange함수를 실행시킨다
+            // disabled={inverted === false}
+            disabled={!inverted}
+          />
+        </div>
+        <h4>{amount}분을 변환하겠다</h4>
+        <div>
+          <label htmlFor='hour'>시간</label>
+          <input
+            value={!inverted ? amount : Math.round(amount / 60)} // 분에 입력한 숫자 amount에 60을 나눠서 시간으로 변환
+            // Math.round()는 반올림
+            // inverted상태가 아니라면, amount으로 보여주고 flipped상태라면 Math.round(amount / 60)로 보여줘라
+            id='hour'
+            placeholder='시간'
+            type='number'
+            onChange={onChange} // input값에 변화가 생기면 onChange함수를 실행시킨다
+            // disabled={inverted === true}
+            disabled={inverted}
+          // disabled가 true면 비활성화(입력못하는 상태)
+          />
+        </div>
+        <button onClick={reset}>reset</button>
+        <button onClick={onFlip}>{inverted ? '바꾸기' : '되돌아가기'}</button>
+      </div>
+    );
+  }
+  const KmToMiles = () => {
+    const [amount, setAmount] = React.useState('');
+
+    const onChange = (e) => {
+      console.log(e.target.value);
+      setAmount(e.target.value);
+    }
+
+    function reset() {
+      setAmount('');
+    }
+
+    const [invered, setInverted] = React.useState(false);
+
+    const onInvert = () => {
+      setInverted((current) => !current);
+    }
+
+    return (
+      <div>{/* 최상위로 감싸줘야함 */}
+        <h3>KM to MILES</h3>
+        <div>
+          <label htmlFor='km'>Km</label>
+          <input
+            value={!invered ? amount : amount * 1.609}
+            id='km'
+            type='number'
+            onChange={onChange}
+            disabled={invered}
+            placeholder='km입력'
+          />
+        </div>
+        <h4>{amount}km를 변환하겠다</h4>
+        <div>
+          <label htmlFor='mile'>mile</label>
+          <input
+            value={invered ? amount : amount / 1.609}
+            id='mile'
+            type='number'
+            onChange={onChange}
+            disabled={!invered}
+            placeholder='mile입력'
+          />
+        </div>
+        <button onClick={reset}>reset</button>
+        <button onClick={onInvert}>{invered === false ? '바꾸기' : '되돌리기'}</button>
+      </div>
+    );
+  }
+  const App = () => {
+
+    // 사용자가 어떤 변환기를 선택하는지
+    const [index, setindex] = React.useState('ss'); // 초기값 'ss' string이다.
+    const onSelect = (e) => {
+      console.log(e.target.value); // 분과 시간을 선택하면 0, km과 miles를 선택하면 1
+      setindex(e.target.value);
     }
     return (
       <div>
         <h1 className='hi'>Super Converter</h1>{/* class는 className으로 */}
-        <label htmlFor='min'>분</label>{/* for는 htmlFor */}
-        <input
-          value={min}
-          id='min'
-          placeholder='분'
-          type='number'
-          onChange={onChange} // input값에 변화가 생기면 onChange함수를 실행시킨다
-        />
-        <h4>{min}분을 변환하겠다</h4>
-        <label htmlFor='hour'>시간</label>
-        <input id='hour' placeholder='시간' type='number' />
+
+        {/* 사용자가 어떤것을 선택하는지 */}
+        <select value={index} onChange={onSelect}>{/* select태그의 value는 index, select태그가 변화할때마다(onChange) onSelect함수 호출 */}
+          <option value='ss'>원하는 변환을 선택하세요.</option>
+          <option value='0'>분 과 시간</option>{/* value값이 string 0이다, value값은 string이어야 함 */}
+          <option value='1'>km 과 miles</option>{/* value값이 string 1이다, value값은 string이어야 함 */}
+        </select>
+        <hr />
+        {/* 아래처럼 하는 이유(null을 사용하는이유)는 '0과' '1'이외의 값이 오는 것을 방지하기 위해 */}
+        {index === 'ss' ? '변환을 선택해주세요' : null}
+        {index === '0' ? <MinutesToHours /> : null}
+        {index === '1' ? <KmToMiles /> : null}
       </div>
     );
   }
