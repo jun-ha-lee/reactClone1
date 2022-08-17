@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<!--React를 사용하기 위한 스크립트 2개-->
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<!-- 바벨 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  // 대문자로 시작 잊지 말것
+  function Btn({ btnText, big }) { // <Btn />으로 부터 전달받는 프로퍼티를 props로, props라는 이름은 다른걸로 바꿔도 무방
+    // 두번째인자 big
+    // console.log(props); // btnText: 'Save Changes'와 btnText: 'Continue'가 찍힘
+    console.log(btnText, big); // Save Changes true가 찍히고,  Continue undefined가 찍힘
+    return (
+      <button
+        style={{
+          backgroundColor: 'tomato',
+          color: 'white',
+          padding: '10px 20px',
+          border: '0 none',
+          borderRadius: 10,
+          fontSize: big ? '18px' : '16px'
+        }}
+      >{btnText}</button> // props로 받아온것중에 btnText값을 출력
+      // 위에 프로퍼티가 {btnText}이면 여기도 그냥 {btnText}라고 써도 됨(하나일때)
+    );
+  }
+
+  // function ConfirmBtn() {
+  //   return (
+  //     <button
+  //       style={{
+  //         backgroundColor: 'tomato',
+  //         color: 'white',
+  //         padding: '10px 20px',
+  //         border: '0 none',
+  //         borderRadius: 10
+  //       }}
+  //     >Confirm</button>
+  //   );
+  // }
+
+  const App = () => {
+    return (
+      <div>
+        <Btn btnText='Save Changes' big='true' />{/* text라는 새로운 정보를 정한다. 이것은 내맘대로 할수 있음 btnText라는 것도 맘대로 이름을 바꿀수 있음 */}
+        <Btn btnText='Continue' />
+      </div>
+    );
+  }
+  const root = document.getElementById('root');
+  ReactDOM.render(<App />, root);
+</script>
+
+</html>
