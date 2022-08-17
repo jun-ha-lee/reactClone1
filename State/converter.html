@@ -78,21 +78,22 @@
     );
   }
   const KmToMiles = () => {
+    // amount는 input값의 데이터(value), setAmount는 amount값을 변화시키기 위한 함수
     const [amount, setAmount] = React.useState('');
 
-    const onChange = (e) => {
-      console.log(e.target.value);
-      setAmount(e.target.value);
+    const onChange = (e) => { // input의 값이 변화할때마다 이 함수가 호출됨
+      console.log(e.target.value); // input값에 어떤 값이 들어와있는지 찾는것
+      setAmount(e.target.value); // input값을 setAmount에 저장
     }
 
-    function reset() {
+    function reset() { // 0으로 초기화
       setAmount('');
     }
 
-    const [invered, setInverted] = React.useState(false);
+    const [invered, setInverted] = React.useState(false); // 변환버튼, 초기값은 false
 
-    const onInvert = () => {
-      setInverted((current) => !current);
+    const onInvert = () => { // 변환버튼을 누르면 이 함수가 호출됨
+      setInverted((current) => !current); // current를 인자로 받고 setInverted는 !current가 됨,즉 true
     }
 
     return (
