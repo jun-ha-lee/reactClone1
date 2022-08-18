@@ -18,12 +18,13 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
   // 대문자로 시작 잊지 말것
-  function Btn({ btnText, big }) { // <Btn />으로 부터 전달받는 프로퍼티를 props로, props라는 이름은 다른걸로 바꿔도 무방
+  function Btn({ btnText, big, changeValue }) { // <Btn />으로 부터 전달받는 프로퍼티를 props로, props라는 이름은 다른걸로 바꿔도 무방
     // 두번째인자 big
     // console.log(props); // btnText: 'Save Changes'와 btnText: 'Continue'가 찍힘
-    console.log(btnText, big); // Save Changes true가 찍히고,  Continue undefined가 찍힘
+    console.log(btnText, '랜더링 되었다'); // Save Changes true가 찍히고,  Continue undefined가 찍힘
     return (
       <button
+        onClick={changeValue} // onClick 이벤트 리스너가 changeValue라는 리스너를 가지게 된다
         style={{
           backgroundColor: 'tomato',
           color: 'white',
@@ -51,11 +52,23 @@
   //   );
   // }
 
+  // 불필요한 리렌더링을 막기위해
+  const MemorizedBtn = React.memo(Btn); // 위의 Btn컴포넌트가 MemorizedBtn이 된다
+  // 아래 버튼에서 Continue는 더이상 리렌더링 되지 않는다
+
   const App = () => {
+    const [btnValue, setBtnValue] = React.useState('Save Changes');
+    const changeValue = () => {
+      return (
+        setBtnValue('Revert Changes')
+      );
+    }
     return (
       <div>
-        <Btn btnText='Save Changes' big='true' />{/* text라는 새로운 정보를 정한다. 이것은 내맘대로 할수 있음 btnText라는 것도 맘대로 이름을 바꿀수 있음 */}
-        <Btn btnText='Continue' />
+        {/* 아래 컴포넌트들에 들어가는 btnText, big, changeValue 같은것은 모두 props이다, 실제로 동작하게 하려면 props를 받아서 html에 뿌려줘야 함 */}
+        <MemorizedBtn btnText={btnValue} big='true' changeValue={changeValue} />{/* text라는 새로운 정보를 정한다. 이것은 내맘대로 할수 있음 btnText라는 것도 맘대로 이름을 바꿀수 있음 */}
+        {/* 버튼을 클릭하면 changeValue컴포넌트 호출 */}
+        <MemorizedBtn btnText='Continue' />{/* 이 버튼은 리렌더링 할 필요가 없음 */}
       </div>
     );
   }
