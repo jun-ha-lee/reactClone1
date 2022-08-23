@@ -89,7 +89,7 @@
     return (
       <div>
         {/* 아래 컴포넌트들에 들어가는 btnText, big, changeValue 같은것은 모두 props이다, 실제로 동작하게 하려면 props를 받아서 html에 뿌려줘야 함 */}
-        <MemorizedBtn btnText={btnValue} big='true' changeValue={changeValue} />{/* text라는 새로운 정보를 정한다. 이것은 내맘대로 할수 있음 btnText라는 것도 맘대로 이름을 바꿀수 있음 */}
+        <MemorizedBtn btnText={btnValue} big='true' changeValue={changeValue} />{/* 내맘대로 할수 있음 btnText라는 것도 맘대로 이름을 바꿀수 있음 */}
         {/* 버튼을 클릭하면 changeValue컴포넌트 호출 */}
         <MemorizedBtn btnText='Continue' />{/* 이 버튼은 리렌더링 할 필요가 없음 */}
         <Btn2 btnText2='Another' fontSize={18} />
