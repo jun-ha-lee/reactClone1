@@ -55,20 +55,6 @@
     );
   }
 
-  // function ConfirmBtn() {
-  //   return (
-  //     <button
-  //       style={{
-  //         backgroundColor: 'tomato',
-  //         color: 'white',
-  //         padding: '10px 20px',
-  //         border: '0 none',
-  //         borderRadius: 10
-  //       }}
-  //     >Confirm</button>
-  //   );
-  // }
-
   // 불필요한 리렌더링을 막기위해
   const MemorizedBtn = React.memo(Btn); // 위의 Btn컴포넌트가 MemorizedBtn이 된다
   // 아래 버튼에서 Continue는 더이상 리렌더링 되지 않는다
