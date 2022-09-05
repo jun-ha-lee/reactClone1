@@ -17,10 +17,12 @@ function Hello() { // 컴포넌트
   useEffect((effctFn), []);
   */
 
+  /*
   useEffect(() => {
     console.log('나타났다!');
     return () => console.log('없어졌다!');
   }, []);
+  */
 
   useEffect(function () {
     console.log('나타났다!');
