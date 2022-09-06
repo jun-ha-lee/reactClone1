@@ -42,6 +42,12 @@ function App() {
         <input type='text' placeholder="너가 할것을 적어요" value={todo} onChange={onChange} />
         <button>할일 추가하기</button>
       </form>
+      <hr />
+      <ul>
+        {todos.map((currentTodo, index) => <li key={index}>{currentTodo}</li>)} {/* map함수, 할일이 쌓여있는 todos의 배열을 currentTodo로 받아오고 <li>에 뿌려준다 */}
+        {/* <li>에 뿌려줄땐 key값을 사용, catjjal참고, key는 고유의 값이어야 한다 */}
+        {/* map()에서 두번째 argument가 index(숫자)라는 유니크한 값을 가진다 */}
+      </ul>
     </div>
   );
 }
