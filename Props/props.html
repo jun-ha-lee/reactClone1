@@ -23,7 +23,7 @@
   function Btn({ btnText, big, changeValue }) { // <Btn />으로 부터 전달받는 프로퍼티를 props로, props라는 이름은 다른걸로 바꿔도 무방
     // 두번째인자 big
     // console.log(props); // btnText: 'Save Changes'와 btnText: 'Continue'가 찍힘
-    console.log(btnText, '랜더링 되었다'); // Save Changes true가 찍히고,  Continue undefined가 찍힘
+    console.log(btnText, big, '랜더링 되었다'); // Save Changes true가 찍히고,  Continue undefined가 찍힘
     return (
       <button
         onClick={changeValue} // onClick 이벤트 리스너가 changeValue라는 리스너를 가지게 된다
