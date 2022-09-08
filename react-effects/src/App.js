@@ -25,21 +25,12 @@ function Hello() { // 컴포넌트
   */
 
   useEffect(function () {
-    console.log('나타났다!');
+    console.log('나타났다!'); // Hello컴포넌트 나올때 찍힘
     return function () {
-      console.log('없어졌다!');
+      console.log('없어졌다!'); // Hello컴포넌트가 없어질때 
     }
   }, []);
 
-  /*
-  useEffect(effctFn
-    console.log('hello컴포넌트 만들어졌다');
-    
-    return () => {
-      console.log('hello컴포넌트 없어졌다');
-    }
-    , []); // Hello컴포넌트가 나올때만 호출
-    */
   return (
     <h1>Hello</h1>
   );
