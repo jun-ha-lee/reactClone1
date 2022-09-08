@@ -42,10 +42,20 @@ function App() {
   }
 
   // 계산하기 버튼
+  const [result, setResult] = useState(0);
   const calcMoney = () => {
-    // let usdToCoin = money / currentCoin.quotes.USD.price
-    // let test = coins.quotes.USD.price;
-    //coins
+    // console.log(coins.find());
+    console.log(selectCoin);
+    // console.log(coins.name);
+    coins.map(function (c) {
+      //console.log(c.name);
+      if (c.name === selectCoin) {
+        const priceCalc = money / c.quotes.USD.price;
+        console.log(priceCalc);
+        setResult(priceCalc);
+      }
+    });
+
   }
 
 
@@ -74,6 +84,7 @@ function App() {
             <button onClick={reset}>초기화</button>
           </div>
           <button onClick={calcMoney}>계산하기</button>
+          <span>{result}</span>
         </div>
       </div>
     </div>
