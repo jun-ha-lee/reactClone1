@@ -23,15 +23,13 @@ function App() {
 
   // 사용자가 코인선택하기(코인 이름과 가격)
   const [selectCoin, setSelectCoin] = useState('select');
-
   const onSelect = (e) => {
     setSelectCoin(e.target.value);
     console.log(e.target);
   }
 
   // 사용자 얼마있는지 입력받기
-  const [money, setMoney] = useState('');
-
+  const [money, setMoney] = useState('ss');
   const inputMoney = (e) => {
     setMoney(e.target.value);
   }
@@ -39,6 +37,7 @@ function App() {
   // 리셋하기
   const reset = () => {
     setMoney('');
+    setSelectCoin('ss');
   }
 
   // 계산하기 버튼
@@ -67,7 +66,7 @@ function App() {
         <div>
           <ul>
             {coins.map((currentCoin) => <li key={currentCoin.id}>{currentCoin.name} ({currentCoin.symbol}): ${currentCoin.quotes.USD.price} USD</li>)}
-            {/* name과 symbol, quotes, USD, price는 API에서 가져온 것에 나와있음 */}
+            {/* id와 name과 symbol, quotes, USD, price는 API에서 가져온 것에 나와있음 */}
           </ul>
         </div>
         <div>
