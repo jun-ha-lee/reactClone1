@@ -22,14 +22,14 @@ function App() {
   const [coins, setCoins] = useState([]);
 
   // 사용자가 코인선택하기(코인 이름과 가격)
-  const [selectCoin, setSelectCoin] = useState('select');
+  const [selectCoin, setSelectCoin] = useState('ss');
   const onSelect = (e) => {
     setSelectCoin(e.target.value);
     console.log(e.target);
   }
 
   // 사용자 얼마있는지 입력받기
-  const [money, setMoney] = useState('ss');
+  const [money, setMoney] = useState('');
   const inputMoney = (e) => {
     setMoney(e.target.value);
   }
