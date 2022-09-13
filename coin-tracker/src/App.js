@@ -41,6 +41,12 @@ function App() {
     setResult(0);
   }
 
+  // 계산하기 비활성화
+  // const [disableInput, setDisableInput] = useState(true);
+  // const disabled = () => {
+  //   setDisableInput(false);
+  // }
+
   // 계산하기 버튼
   const [result, setResult] = useState(0);
   const calcMoney = () => {
@@ -89,7 +95,7 @@ function App() {
             />
             <button onClick={reset}>초기화</button>
           </div>
-          <button onClick={calcMoney}>계산하기</button>
+          <button onClick={calcMoney} disabled={money === '' || selectCoin === 'ss' ? 'disabled' : ''}>계산하기</button>
           <span>{result}</span>
         </div>
       </div>
