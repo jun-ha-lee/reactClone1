@@ -38,6 +38,7 @@ function App() {
   const reset = () => {
     setMoney('');
     setSelectCoin('ss');
+    setResult(0);
   }
 
   // 계산하기 버튼
@@ -46,6 +47,12 @@ function App() {
     // console.log(coins.find());
     console.log(selectCoin);
     // console.log(coins.name);
+    // 얼마있나요?가 빈칸일때와 코인선택을 안했을때 비활성화
+    if (money === '' || selectCoin === 'ss') {
+      alert('금액 입력해주세요 혹은 코인을 선택해주세요');
+
+    }
+
     coins.map(function (c) {
       //console.log(c.name);
       if (c.name === selectCoin) {
