@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Movie from "./components/Movie"; // Movie.js컴포넌트 임포트
+import Movie from "../components/Movie"; // Movie.js컴포넌트 임포트
 
 function Home() {
   // 로딩만들기
