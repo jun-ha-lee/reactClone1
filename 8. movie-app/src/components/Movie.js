@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"; // prop-types 설정
 
-function Movie({ mediumCoverImage, title, summary, genres }) { // props들은 App.js에서 받아오는것들
+function Movie({ mediumCoverImage, title, summary, genres }) { // props들은 Home.js에서 받아오는것들
   return (
     <div>
       <img src={mediumCoverImage} alt={title} />

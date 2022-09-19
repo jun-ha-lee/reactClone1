@@ -56,9 +56,7 @@ function App() {
     // 얼마있나요?가 빈칸일때와 코인선택을 안했을때 비활성화
     if (money === '' || selectCoin === 'ss') {
       alert('금액 입력해주세요 혹은 코인을 선택해주세요');
-
     }
-
     coins.map(function (c) {
       //console.log(c.name);
       if (c.name === selectCoin) {
@@ -76,15 +74,19 @@ function App() {
       <h1>Coin List {coins.length}</h1>
       {loading ? <strong>loading...</strong> : null}
       <div className={styles.title}>
+        {/* 코인리스트 */}
         <div>
           <ul>
             {coins.map((currentCoin) => <li key={currentCoin.id}>{currentCoin.name} ({currentCoin.symbol}): ${currentCoin.quotes.USD.price} USD</li>)}
             {/* id와 name과 symbol, quotes, USD, price는 API에서 가져온 것에 나와있음 */}
           </ul>
         </div>
+
+        {/* 사용자선택 */}
         <div>
           {!loading ? <select value={selectCoin} onChange={onSelect}>
             <option value={'ss'}>코인을 선택하세요.</option>
+            {/* API로 받아온 코인들 -> coins를 사용하여 map함수 돌린다 */}
             {coins.map((currentCoin) => <option value={currentCoin.name}>{currentCoin.name} ({currentCoin.symbol}): ${currentCoin.quotes.USD.price} USD</option>)}
           </select> : null} {/* loading화면이 나올때는 select가 나오지 않게 */}
           <div>

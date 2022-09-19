@@ -40,14 +40,6 @@
       }} onClick={handleOnClick}>Click me</button>
     );
   }
-  /*
-  const container = (
-    <div>
-      <Title />
-      <Button />
-    </div>
-  );  
-  */
 
   const Container = () => (
     <div> {/* 최상위 태그가 하나만 남아야 하므로 <div>로 감싸줌 */}
@@ -55,8 +47,7 @@
       <Button />
     </div>
   )
-  // const container = React.createElement('div', null, [Title, Button]);
-  // ReactDOM.render(span, root); // html로 만들어서 화면에 배치한다, span을 root안에 배치
+
   ReactDOM.render(<Container />, root); // html로 만들어서 화면에 배치, container를 root안에 배치
 </script>
 
