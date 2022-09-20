@@ -1,0 +1,21 @@
+.background {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.content {
+  width: calc(100% - 500px);
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+
+.content h1 {
+  color: #ffffff;
+}
+
+.content h2 {
+  color: #ffffff;
+}
