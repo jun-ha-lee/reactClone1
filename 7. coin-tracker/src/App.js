@@ -87,7 +87,7 @@ function App() {
           {!loading ? <select value={selectCoin} onChange={onSelect}>
             <option value={'ss'}>코인을 선택하세요.</option>
             {/* API로 받아온 코인들 -> coins를 사용하여 map함수 돌린다 */}
-            {coins.map((currentCoin) => <option value={currentCoin.name}>{currentCoin.name} ({currentCoin.symbol}): ${currentCoin.quotes.USD.price} USD</option>)}
+            {coins.map((currentCoin, index) => <option key={index} value={currentCoin.name}>{currentCoin.name} ({currentCoin.symbol}): ${currentCoin.quotes.USD.price} USD</option>)}
           </select> : null} {/* loading화면이 나올때는 select가 나오지 않게 */}
           <div>
             <input value={money}
